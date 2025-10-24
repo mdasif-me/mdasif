@@ -24,7 +24,10 @@ const ProjectCard = ({ project }: { project: IProject }) => {
           <p className="gradient-text uppercase">Gallery</p>
           <Quote isBordered text="View full case study" />
         </header>
-        <div id={name} className="flex items-start gap-5 self-stretch">
+        <div
+          id={name}
+          className="flex md:flex-nowrap flex-wrap items-start gap-5 self-stretch"
+        >
           {images.map((image, i) => (
             <div key={i} className="relative rounded-2xl overflow-hidden">
               <Image

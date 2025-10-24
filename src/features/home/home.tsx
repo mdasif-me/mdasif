@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <div className="mt-28 border-wrapper p-5 space-y-10">
+      <div className="mt-28 border-wrapper md:p-5 p-1 space-y-10">
         <Header />
         <Projects />
       </div>
