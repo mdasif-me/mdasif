@@ -1,0 +1,182 @@
+.header_text {
+  color: var(--color-secondary);
+  font-family: "Roboto Flex";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+/* quote button classes */
+.quote_arrow {
+  width: 40px;
+  height: 40px;
+  transform: rotate(-26.09deg);
+  flex-shrink: 0;
+}
+.quote_circle {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #a7beb4;
+}
+.quote_circle_bordered {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(225, 234, 229, 0.5);
+}
+.quote_container {
+  display: flex;
+  align-items: start;
+  transition: all 0.4s ease-out;
+  max-width: max-content;
+}
+
+.quote_wrapper {
+  background-image: url("/quote-border.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease-out;
+}
+.quote_wrapper_without_border {
+  width: 76px;
+  height: 76px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease-out;
+}
+.quote_text {
+  color: #a7beb4;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+  transition: all 0.4s ease-out;
+  text-transform: uppercase;
+}
+
+.quote_container:hover .quote_text {
+  transition: all 0.4s ease-out;
+  padding-top: 24px;
+}
+.quote_container:hover .quote_wrapper {
+  transform: rotate(26.09deg);
+  transition: all 0.4s ease-out;
+  /* box-shadow: 0 0 8px 0 #283c34; */
+  opacity: 0.9;
+  border-radius: 50%;
+}
+.quote_container:hover .quote_wrapper_without_border {
+  transform: rotate(26.09deg);
+  transition: all 0.4s ease-out;
+  /* box-shadow: 0 0 8px 0 #283c34; */
+  opacity: 0.9;
+  border-radius: 50%;
+}
+.quote_container:active {
+  opacity: 0.6;
+}
+
+/* responsive media queries */
+/*
+ * -----------------------------------------------------------------
+ * MEDIA QUERY BREAKPOINTS (MIN-WIDTH: MOBILE-FIRST)
+ * start: 320px | end: 1920px (or higher for 4K screens)
+ * -----------------------------------------------------------------
+ */
+
+/* -------------------------------------------------------- */
+/* 1. BASE: All devices (min-width: 320px start)*/
+/* All device styles here (small to maximum) || mobile-first */
+/* -------------------------------------------------------- */
+.primary_button {
+  display: flex;
+  width: 120px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #3e5d52;
+}
+
+.primary_button:hover {
+  border-radius: 16px;
+  border: 4px solid #3e5d52;
+  box-shadow: 0 0 8px 0 #283c34;
+  background: transparent;
+  transition: all 0.4s ease-out;
+}
+/* -------------------------------------------------------- */
+/* 2. SMALL PHONES / MEDIUM PHONES (MIN-WIDTH: 480px) */
+/* iPhone SE, Google Pixel, etc. */
+/* -------------------------------------------------------- */
+@media (min-width: 480px) {
+}
+
+/* -------------------------------------------------------- */
+/* 3. LARGE PHONES / PORTRAIT TABLETS (MIN-WIDTH: 600px) */
+/* Phone Tablets, Small Tablets */
+/* -------------------------------------------------------- */
+@media (min-width: 600px) {
+}
+
+/* -------------------------------------------------------- */
+/* 4. STANDARD TABLETS / SMALL LAPTOPS (MIN-WIDTH: 768px) */
+/* iPad, Mobile Landscape */
+/* -------------------------------------------------------- */
+@media (min-width: 768px) {
+}
+
+/* -------------------------------------------------------- */
+/* 5. STANDARD DESKTOPS (MIN-WIDTH: 1024px) */
+/* Standard Laptops and Monitors */
+/* -------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .primary_button {
+    display: flex;
+    width: 164px;
+    height: 63px;
+    padding: 18px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #3e5d52;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 6. LARGE DESKTOPS / WIDE SCREENS (MIN-WIDTH: 1440px) */
+/* HD Monitors */
+/* -------------------------------------------------------- */
+@media (min-width: 1440px) {
+}
+
+/* -------------------------------------------------------- */
+/* 7. ULTRA-WIDE / 4K SCREENS (MIN-WIDTH: 1600px) */
+/* -------------------------------------------------------- */
+@media (min-width: 1600px) {
+}
