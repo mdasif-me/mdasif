@@ -1,7 +1,5 @@
 import Link from "next/link"
 
-import styles from "@/styles/home.module.css"
-
 import {
   Quote,
   ScrollVelocityContainer,
@@ -9,6 +7,7 @@ import {
 } from "../../components"
 import AnimatedTitle from "./animated-title"
 import { core_skills, description, SOCIALS } from "./constants"
+import styles from "./styles/home.module.css"
 
 const Hero = () => {
   return (

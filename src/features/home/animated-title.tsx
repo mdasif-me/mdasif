@@ -1,6 +1,5 @@
-import styles from "@/styles/home.module.css"
-
 import { headline, subtitle, title } from "./constants"
+import styles from "./styles/home.module.css"
 
 const AnimatedTitle = () => {
   return (

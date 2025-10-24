@@ -1,6 +1,58 @@
-.header_text {
+.border-wrapper {
+  border-radius: 16px;
+  border: 2px solid #272727;
+}
+.gradient-text {
+  font-family: "Roboto Flex", sans-serif !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: normal !important;
+  letter-spacing: 5.04px !important;
+  background: linear-gradient(
+    121deg,
+    #fff -2.28%,
+    #fff 21.31%,
+    #fff 33.91%,
+    #3e5d52 92.75%
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  display: inline-block !important;
+}
+
+.image-overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  border-radius: 16px;
+}
+
+.header {
+  color: #f3f6f5;
+  text-align: right;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 36px */
+  text-transform: uppercase;
+}
+.description {
+  color: #6f6f6f;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+.header-text {
   color: var(--color-secondary);
-  font-family: "Roboto Flex";
+  font-family: "Roboto Flex", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
