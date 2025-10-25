@@ -3,24 +3,22 @@
   border: 2px solid #272727;
 }
 .gradient-text {
-  font-family: "Roboto Flex", sans-serif !important;
-  font-size: 24px !important;
-  font-style: normal !important;
-  font-weight: 500 !important;
-  line-height: normal !important;
-  letter-spacing: 5.04px !important;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 36px */
+  text-transform: uppercase;
   background: linear-gradient(
-    121deg,
-    #fff -2.28%,
-    #fff 21.31%,
-    #fff 33.91%,
-    #3e5d52 92.75%
-  ) !important;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  display: inline-block !important;
+    143deg,
+    #fff -47.63%,
+    #fff -12.48%,
+    #fff 6.3%,
+    #3e5d52 93.99%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .image-overlay {
