@@ -3,7 +3,7 @@ import styles from "../styles/faq.module.css"
 
 const Question = ({ question }: { question: IQuestion }) => {
   return (
-    <div className="flex h-80 bg-background rounded-2xl p-5 flex-col items-center justify-center gap-5 mx-auto">
+    <div className="flex md:h-80 h-96 bg-background rounded-2xl p-5 flex-col items-center justify-center gap-5 mx-auto">
       <h3 className={`${styles["gradient-text"]} text-center`}>
         {question.question}
       </h3>

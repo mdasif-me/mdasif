@@ -64,7 +64,7 @@ const Questions = () => {
 
         <CarouselContent className="h-[600px]">
           {questions.map((question, index) => (
-            <CarouselItem key={index} className="pt-5 md:basis-1/2">
+            <CarouselItem key={index} className="pt-5 basis-1/2">
               <div
                 className={cn(
                   "transition-all pb-1 duration-500 ease-[cubic-bezier(0.42,0,1,1)]",
