@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import {
-  ArrowLeft01Icon,
-  ArrowRight01Icon,
+  ArrowLeft02Icon,
+  ArrowRight02Icon,
 } from "@hugeicons-pro/core-stroke-standard"
 import { HugeiconsIcon } from "@hugeicons/react"
 import useEmblaCarousel, {
@@ -177,61 +177,49 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 
 function CarouselPrevious({
   className,
-  variant = "outline",
-  size = "icon",
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+  const { scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <Button
-      data-slot="carousel-previous"
-      variant={variant}
-      size={size}
+    <button
+      data-slot="carousel-next"
       className={cn(
-        "absolute size-8 rounded-full",
-        orientation === "horizontal"
-          ? "top-1/2 -left-12 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        "absolute size-8 rounded-full carousel-button cursor-pointer",
+        "disabled:text-muted-foreground text-white/70 disabled:cursor-default",
         className
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <HugeiconsIcon icon={ArrowLeft01Icon} />
+      <HugeiconsIcon icon={ArrowLeft02Icon} />
       <span className="sr-only">Previous slide</span>
-    </Button>
+    </button>
   )
 }
 
 function CarouselNext({
   className,
-  variant = "outline",
-  size = "icon",
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
+  const { scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Button
+    <button
       data-slot="carousel-next"
-      variant={variant}
-      size={size}
       className={cn(
-        "absolute size-8 rounded-full",
-        orientation === "horizontal"
-          ? "top-1/2 -right-12 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        "absolute size-8 rounded-full carousel-button cursor-pointer",
+        "disabled:text-muted-foreground text-white/70 disabled:cursor-default",
         className
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <HugeiconsIcon icon={ArrowRight01Icon} />
+      <HugeiconsIcon icon={ArrowRight02Icon} />
       <span className="sr-only">Next slide</span>
-    </Button>
+    </button>
   )
 }
 

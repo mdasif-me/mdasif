@@ -1,0 +1,17 @@
+.gradient-text {
+  font-family: "Roboto Flex", sans-serif !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 150% !important; /* 36px */
+  background: linear-gradient(
+    133deg,
+    #fff -47.63%,
+    #fff -12.48%,
+    #fff 6.3%,
+    #3e5d52 93.99%
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
