@@ -30,8 +30,21 @@
     rgba(0, 0, 0, 0.4) 100%
   );
   border-radius: 16px;
+  transition: opacity 0.2s cubic-bezier(0.42, 0, 1, 1);
+  opacity: 1;
+}
+.image-overlay:hover {
+  opacity: 0;
 }
 
+.title {
+  color: #a7beb4;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 72px */
+  text-transform: uppercase;
+}
 .header {
   color: #f3f6f5;
   text-align: right;
