@@ -59,11 +59,11 @@ const Quote = ({
             isBordered
               ? "quote_circle_bordered"
               : isBackground
-                ? "quote_circle !bg-[#E1EAE5]"
+                ? "quote_circle bg-[#E1EAE5]!"
                 : "quote_circle"
           )}
           disabled={disabled}
-          aria-label={!isText ? text : undefined}
+          aria-label={text}
         >
           <HugeiconsIcon
             icon={ArrowRight02Icon}
@@ -77,7 +77,7 @@ const Quote = ({
         <p
           className={cn(
             "quote_text truncate",
-            (isBordered || isBackground) && "!text-[#F3F6F5]"
+            (isBordered || isBackground) && "text-[#F3F6F5]!"
           )}
         >
           {text}

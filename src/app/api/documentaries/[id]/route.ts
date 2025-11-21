@@ -17,12 +17,12 @@ import { MEngagement } from "@/services/model/engagement.model"
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB()
 
-    const { id } = params
+    const { id } = await params
 
     // Validate MongoDB ObjectId format
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
@@ -64,7 +64,7 @@ export async function GET(
  */
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify secret key
@@ -74,7 +74,7 @@ export async function PUT(
 
     await connectDB()
 
-    const { id } = params
+    const { id } = await params
 
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
       return badRequestResponse("Invalid documentary ID format")
@@ -116,7 +116,7 @@ export async function PUT(
  */
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify secret key
@@ -126,7 +126,7 @@ export async function DELETE(
 
     await connectDB()
 
-    const { id } = params
+    const { id } = await params
 
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
       return badRequestResponse("Invalid documentary ID format")
