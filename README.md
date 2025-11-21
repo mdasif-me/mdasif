@@ -1,46 +1,228 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Md. Asif - Portfolio & Personal Website
 
-## Getting Started
+Welcome to my professional portfolio and personal website built with cutting-edge web technologies. This is a fully-featured, high-performance web application showcasing my expertise as a Frontend & Full-Stack Developer.
 
-First, run the development server:
+## 🎯 About
+
+I'm **Md. Asif**, a Frontend & Full-Stack Software Engineer with 5+ years of experience specializing in:
+
+- **React.js & Next.js** - Building modern, performant web applications
+- **TypeScript** - Type-safe JavaScript development
+- **Full-Stack Development** - From UI to backend APIs
+- **Web Performance** - Optimizing for speed and user experience
+- **UI/UX Development** - Creating beautiful, accessible interfaces
+- **REST & GraphQL APIs** - Building and integrating APIs
+- **AWS & DevOps** - Cloud deployment and CI/CD pipelines
+
+### Portfolio Highlights
+
+- **Website**: [muhammadasif.me](https://muhammadasif.me)
+- **Expertise**: Frontend Development, Full-Stack Solutions, Web Performance Optimization
+- **Focus Areas**: React, Next.js, TypeScript, Tailwind CSS, GSAP Animations, and Modern Web Standards
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** (v18 or higher)
+- **pnpm** (v9 or higher) - Used as the package manager
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/mdasif-me/mdasif.git
+cd mdasif
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Set up environment variables (if needed):
 
-## Learn More
+```bash
+cp .env.example .env.local
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run the development server with Turbopack for faster builds:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application auto-updates as you edit files. Start by modifying `src/app/page.tsx`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Production Build
 
-## IDE Configuration
+```bash
+pnpm build
+pnpm start
+```
 
-### Local IDE Configuration
+### Other Commands
 
-The `.idea/` directory, which contains IDE-specific configuration files, should not be committed to version control. This ensures that local settings do not conflict between developers.
+- **Format Code**: `pnpm format` - Formats code using Prettier
+- **Lint**: `pnpm lint` - Run ESLint to check code quality
+- **Build Check**: `pnpm build:check` - Run Prettier check and build
 
-To regenerate `.idea/` locally, simply open the project in your IDE (e.g., IntelliJ IDEA, WebStorm), and it will automatically create the necessary configuration files.
+## 🏗️ Project Structure
 
-If there are any shared settings required for the project, document them separately or use a shared configuration file outside of `.idea/`.
+```
+src/
+├── app/              # Next.js App Router pages
+│   ├── layout.tsx    # Root layout with navigation, reviews, FAQ, and contact
+│   ├── page.tsx      # Home page
+│   ├── about/        # About page
+│   ├── contact/      # Contact page
+│   ├── projects/     # Projects portfolio
+│   └── services/     # Services page
+├── components/       # Reusable React components
+│   ├── ui/           # Base UI components (buttons, carousels, etc.)
+│   ├── navigation/   # Navigation components
+│   └── constants/    # Component-related constants
+├── features/         # Feature-specific components and logic
+│   ├── about/        # About section components
+│   ├── contact/      # Contact form and social links
+│   ├── experiences/  # Work experience timeline
+│   ├── faq/          # FAQ section
+│   ├── home/         # Home page hero and sections
+│   ├── projects/     # Projects showcase
+│   ├── reviews/      # Client reviews/testimonials
+│   └── services/     # Services showcase
+├── hooks/            # Custom React hooks
+├── lib/              # Utility functions
+├── styles/           # Global and module CSS
+├── types/            # TypeScript type definitions
+└── utils/            # Helper utilities
+config/               # Site configuration and metadata
+```
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **Next.js 16** - React framework with App Router
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first CSS framework
+- **GSAP** - Advanced animations
+- **Motion** - Framer Motion animations
+- **Embla Carousel** - Carousel component
+
+### Styling & UI
+
+- **Tailwind CSS v4** - Modern utility CSS
+- **PostCSS** - CSS transformation
+- **Radix UI** - Headless UI components
+- **CVA (Class Variance Authority)** - Component variants
+
+### Development Tools
+
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Husky** - Git hooks
+- **Lint-staged** - Stage file linting
+- **TypeScript** - Type checking
+
+## 📱 Features
+
+- ✨ **Modern Design** - Beautiful, responsive UI with smooth animations
+- ⚡ **High Performance** - Optimized with Turbopack for faster builds
+- 🔍 **SEO Optimized** - Comprehensive metadata and structured data
+- 📱 **Responsive Design** - Works seamlessly on all devices
+- ♿ **Accessibility** - Built with a11y best practices
+- 🎨 **Smooth Animations** - GSAP and Motion animations
+- 📊 **Sections Include**:
+  - Hero section with animated title
+  - About/Bio section
+  - Services showcase
+  - Portfolio/Projects display
+  - Work experiences timeline
+  - Client reviews/testimonials
+  - FAQ section
+  - Contact form and social links
+
+## 🔍 SEO & Metadata
+
+The site includes comprehensive SEO configuration:
+
+- Metadata for all pages (home, about, services, projects)
+- Open Graph tags for social sharing
+- Twitter Card integration
+- Structured data markup
+- Sitemap and robots.txt
+- Google and Bing site verification
+
+## 🌐 Deployment
+
+### Vercel (Recommended)
+
+The easiest way to deploy is using [Vercel Platform](https://vercel.com) from the Next.js creators:
+
+1. Push your code to GitHub
+2. Import the repository in Vercel
+3. Vercel will automatically detect Next.js and configure the build settings
+4. Your site will be live after deployment
+
+For more details, check [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
+
+### Other Platforms
+
+You can also deploy to:
+
+- **Netlify** - Supports Next.js
+- **AWS Amplify** - Full AWS integration
+- **Docker** - Containerized deployment
+
+## 📝 Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```env
+NEXT_PUBLIC_CONTACT_EMAIL=your-email@example.com
+NEXT_PUBLIC_CONTACT_PHONE=+1234567890
+```
+
+## 🚀 Performance Optimizations
+
+- **Image Optimization** - Automatic WebP/AVIF format conversion
+- **Code Splitting** - Automatic route-based splitting
+- **CSS Optimization** - Tailwind CSS purging unused styles
+- **Font Optimization** - Using next/font for Google Fonts
+- **Caching** - Strategic HTTP caching headers
+- **Security Headers** - CSP, X-Frame-Options, etc.
+
+## 🤝 Contributing
+
+This is a personal portfolio project. While contributions are not expected, feedback and suggestions are always welcome!
+
+## 📞 Contact
+
+- **Email**: contact@muhammadasif.me
+- **Website**: [muhammadasif.me](https://muhammadasif.me)
+- **GitHub**: [@mdasif-me](https://github.com/mdasif-me)
+- **Twitter**: [@mdasif-me](https://twitter.com/mdasif-me)
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org) - The React framework for production
+- [Tailwind CSS](https://tailwindcss.com) - For utility-first CSS
+- [GSAP](https://greensock.com/gsap/) - For professional animations
+- [Vercel](https://vercel.com) - For deployment platform
+- All open-source libraries and communities that made this possible
+
+---
+
+**Built with ❤️ by Md. Asif**
