@@ -1,0 +1,53 @@
+.contact-card-logo {
+  display: flex;
+  padding: 16px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid #272727;
+  background: #272727;
+}
+
+.contact-card .title {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 42px */
+  text-transform: uppercase;
+  background: linear-gradient(
+    133deg,
+    #fff -47.63%,
+    #fff -12.48%,
+    #fff 6.3%,
+    #3e5d52 93.99%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header {
+  text-align: center;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 54px */
+  background: linear-gradient(
+    133deg,
+    #fff -47.63%,
+    #fff -12.48%,
+    #fff 6.3%,
+    #3e5d52 93.99%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 28px;
+  }
+}

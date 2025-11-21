@@ -1,0 +1,53 @@
+.card {
+  display: flex;
+  padding: 24px 24px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  flex: 1;
+  border-radius: 16px;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover {
+    transform: none;
+  }
+}
+.border {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(225, 234, 229, 0.5);
+  background: #272727;
+}
+.chip {
+  font-family: "Roboto Flex", sans-serif;
+  padding: 10px 16px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 45px;
+  background: #272727;
+}
+@media (max-width: 767px) {
+  .card {
+    padding: 12px 12px;
+    gap: 20px;
+  }
+}

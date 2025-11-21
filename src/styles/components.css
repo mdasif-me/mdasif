@@ -1,0 +1,381 @@
+.font-roboto-flex {
+  font-family: "Roboto Flex", sans-serif;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  align-self: stretch;
+  border-radius: 16px 16px 16px 16px;
+  background: #1a1a1a;
+}
+.carousel-button {
+  display: flex;
+  width: 88px;
+  height: 56px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  border-bottom: 1px solid #0f0f0f;
+  background: #0f0f0f;
+}
+.border-wrapper {
+  border-radius: 16px;
+  border: 2px solid #272727;
+}
+.gradient-text {
+  width: fit-content;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 150%; /* 36px */
+  text-transform: uppercase;
+  background: linear-gradient(
+    143deg,
+    #fff -47.63%,
+    #fff -12.48%,
+    #fff 6.3%,
+    #a5ffdf8f 93.99%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.image-overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  border-radius: 16px;
+  transition: opacity 0.2s cubic-bezier(0.42, 0, 1, 1);
+  opacity: 1;
+}
+.image-overlay:hover {
+  opacity: 0;
+}
+
+.title {
+  color: #a7beb4;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 72px */
+  text-transform: uppercase;
+}
+.header {
+  color: #f3f6f5;
+  text-align: right;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 36px */
+  text-transform: uppercase;
+}
+.description {
+  color: #6f6f6f;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+.header-text {
+  color: var(--color-secondary);
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+/* quote button classes */
+.quote_arrow {
+  width: 40px;
+  height: 40px;
+  transform: rotate(-26.09deg);
+  flex-shrink: 0;
+}
+.quote_circle {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #a7beb4;
+}
+.quote_circle_bordered {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(225, 234, 229, 0.5);
+}
+.quote_container {
+  display: flex;
+  align-items: start;
+  transition: all 0.4s ease-out;
+  max-width: max-content;
+}
+
+.quote_wrapper {
+  background-image: url("/quote-border.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease-out;
+}
+.quote_wrapper_without_border {
+  width: 76px;
+  height: 76px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease-out;
+}
+.quote_text {
+  color: #a7beb4;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  transition: all 0.4s ease-out;
+  text-transform: uppercase;
+  will-change: transform;
+}
+
+.quote_container:hover .quote_text {
+  transition: all 0.4s ease-out;
+  transform: translateY(28px);
+}
+.quote_container:hover .quote_wrapper {
+  transform: rotate(26.09deg);
+  transition: all 0.4s ease-out;
+  opacity: 0.9;
+  border-radius: 50%;
+}
+.quote_container:hover .quote_wrapper_without_border {
+  transform: rotate(26.09deg);
+  transition: all 0.4s ease-out;
+  opacity: 0.9;
+  border-radius: 50%;
+}
+.quote_container:active {
+  opacity: 0.6;
+}
+.button {
+  display: flex;
+  width: 100%;
+  height: 63px;
+  padding: 18px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #3e5d52;
+  cursor: pointer;
+}
+.button p {
+  color: #e1eae5;
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+/* responsive media queries */
+/*
+ * -----------------------------------------------------------------
+ * MEDIA QUERY BREAKPOINTS (MIN-WIDTH: MOBILE-FIRST)
+ * start: 320px | end: 1920px (or higher for 4K screens)
+ * -----------------------------------------------------------------
+ */
+/* -------------------------------------------------------- */
+/* 1. BASE (Mobile-first: 320px+) */
+/* -------------------------------------------------------- */
+.primary_button {
+  display: flex;
+  width: 120px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #3e5d52;
+  transition: all 0.3s ease;
+}
+
+.primary_button:hover {
+  border-radius: 12px;
+  border: 2px solid #3e5d52;
+  box-shadow: 0 0 6px 0 #283c34;
+  background: transparent;
+}
+
+@media (max-width: 720px) {
+  .button {
+    width: auto;
+    padding: 12px 16px;
+    height: 48px;
+  }
+}
+/* Fix for quote section small devices */
+@media (max-width: 767px) {
+  .title {
+    font-size: 28px;
+    line-height: 140%;
+  }
+
+  .quote_circle,
+  .quote_circle_bordered {
+    width: 36px;
+    height: 36px;
+  }
+
+  .quote_wrapper,
+  .quote_wrapper_without_border {
+    width: 56px;
+    height: 56px;
+  }
+
+  .quote_arrow {
+    width: 26px;
+    height: 26px;
+  }
+
+  .quote_text {
+    font-size: 16px;
+  }
+
+  .quote_container:hover .quote_text {
+    transform: translateY(18px);
+  }
+
+  .primary_button {
+    width: 110px;
+    height: 45px;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 2. MEDIUM DEVICES (Tablets: 768px - 1023px) */
+/* -------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .title {
+    font-size: 36px;
+  }
+
+  .quote_wrapper,
+  .quote_wrapper_without_border {
+    width: 70px;
+    height: 70px;
+  }
+
+  .quote_circle,
+  .quote_circle_bordered {
+    width: 46px;
+    height: 46px;
+  }
+
+  .quote_arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .primary_button {
+    width: 130px;
+    height: 55px;
+  }
+
+  .quote_container:hover .quote_text {
+    transform: translateY(20px);
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 3. LARGE DESKTOPS (1024px+) */
+/* -------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .primary_button {
+    width: 164px;
+    height: 63px;
+    padding: 18px 24px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .quote_wrapper,
+  .quote_wrapper_without_border {
+    width: 76px;
+    height: 76px;
+  }
+
+  .quote_circle,
+  .quote_circle_bordered {
+    width: 40px;
+    height: 40px;
+  }
+
+  .quote_arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .quote_text {
+    font-size: 16px;
+  }
+
+  .quote_container:hover .quote_text {
+    transform: translateY(28px);
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 4. ULTRA-WIDE / 4K SCREENS (1600px+) */
+/* -------------------------------------------------------- */
+@media (min-width: 1600px) {
+  .title {
+    font-size: 54px;
+  }
+
+  .quote_wrapper,
+  .quote_wrapper_without_border {
+    width: 86px;
+    height: 86px;
+  }
+
+  .primary_button {
+    width: 180px;
+    height: 68px;
+  }
+
+  .quote_container:hover .quote_text {
+    transform: translateY(33px);
+  }
+}

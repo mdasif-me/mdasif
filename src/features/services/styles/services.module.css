@@ -1,0 +1,13 @@
+.chip {
+  display: flex;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  border: 1px solid rgba(243, 246, 245, 0.28);
+  background: rgba(39, 39, 39, 0.4);
+}
+.icon-glow {
+  filter: drop-shadow(0 0 8px rgba(4, 155, 102, 0.3));
+}
