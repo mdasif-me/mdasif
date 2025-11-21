@@ -1,3 +1,5 @@
+import { Suspense } from "react"
+
 import {
   Carousel,
   CarouselContent,
@@ -23,7 +25,9 @@ const Reviews = () => {
               key={rev.id}
               className="pl-4 md:basis-1/2 xl:basis-1/3 h-auto"
             >
-              <Review review={rev} />
+              <Suspense>
+                <Review review={rev} />
+              </Suspense>
             </CarouselItem>
           ))}
         </CarouselContent>

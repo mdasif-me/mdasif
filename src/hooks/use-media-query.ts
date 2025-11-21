@@ -3,6 +3,7 @@ import * as React from "react"
 export function useMediaQuery(query: string): boolean {
   const getDefaultSnapshot = () => false
 
+  // eslint-disable-next-line react-hooks/use-memo
   const getServerSnapshot = React.useCallback(getDefaultSnapshot, [])
 
   const mediaQueryList = React.useMemo(() => {

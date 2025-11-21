@@ -58,7 +58,7 @@ const Contact = () => {
         <div className="xl:flex-1 xl:flex items-stretch gap-6">
           <div className="flex-1">
             <div className="grid sm:grid-cols-2 gap-6 h-full">
-              {SOCIALS.map((social, index) => {
+              {SOCIALS.map((social) => {
                 if (!social.icon) {
                   console.warn(`Missing icon for social: ${social.name}`)
                   return null

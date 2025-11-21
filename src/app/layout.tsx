@@ -1,16 +1,17 @@
 import "@/styles/globals.css"
 
+import { Suspense } from "react"
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { Header } from "@/components"
 
 import Navigation from "@/components/navigation/navigation"
 import { StructuredData } from "@/components/structured-data"
-import Contact from "@/features/contact"
 import { FAQ } from "@/features/faq"
 import { Reviews } from "@/features/reviews"
 
 import { rootMetadata } from "../../config"
+import { Contact } from "../features/contact"
 import { RootWrapper } from "./root-wrapper"
 
 const poppins = Poppins({
@@ -52,10 +53,12 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <RootWrapper>
-          <Navigation />
+          <Suspense>
+            <Navigation />
+          </Suspense>
           <main className="container mx-auto">{children}</main>
           <div className="container mx-auto my-7">
-            <div className="mt-20 border-wrapper !border-[#1A1A1A] md:p-5 p-1 md:space-y-10 space-y-3">
+            <div className="mt-20 border-wrapper border-[#1A1A1A]! md:p-5 p-1 md:space-y-10 space-y-3">
               <Header name="REVIEWS" />
               <Reviews />
             </div>
@@ -64,7 +67,9 @@ export default function RootLayout({
               <FAQ />
             </div>
             <div className="mt-28 md:space-y-10 space-y-3">
-              <Contact />
+              <Suspense>
+                <Contact />
+              </Suspense>
             </div>
           </div>
         </RootWrapper>
