@@ -22,7 +22,7 @@ const Hero = () => {
           href={SOCIALS[0].href}
           target="_blank"
           rel="noopener noreferrer"
-          className="xl:w-full xl:!flex !hidden absolute right-6 top-20"
+          className="xl:w-full xl:flex! hidden! absolute right-6 top-20"
         >
           <Quote isWrapper className="absolute top-0 right-0" />
         </Link>

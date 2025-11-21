@@ -56,7 +56,7 @@ const Review = ({ review }: { review: IReview }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div ref={cardRef} className={`${styles.card} group relative`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         <article className="px-6 sm:gap-7 gap-3 py-6 sm:py-10 flex-1 flex flex-col justify-start relative z-10">
           <h3 className="gradient-text mb-4 text-xl font-semibold group-hover:text-primary transition-colors duration-300">
             {review.title}

@@ -47,7 +47,7 @@ const Hero = () => {
             alt="Active status icon"
             width={52}
             height={52}
-            className="object-contain object-center absolute sm:-bottom-[110px] -bottom-[135px] left-1/2 translate-x-[80px] z-20"
+            className="object-contain object-center absolute sm:-bottom-[110px] -bottom-[135px] left-1/2 translate-x-20 z-20"
             priority
           />
         </div>

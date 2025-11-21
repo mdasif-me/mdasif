@@ -1,41 +1,41 @@
-import { IReview } from "../interface"
-
-export const reviews: IReview[] = [
+export const reviews = [
   {
     id: "1",
-    title: "He brings fresh perspectives that drive real results!",
-    name: "Fubara Dikson",
+    title: "He brings fresh perspectives that truly make a difference!",
+    name: "Fariha Nawar",
+    designation: "UI/UX Designer",
     review:
-      "Asif's unwavering dedication to user-centric design resulted in a significant improvement in user satisfaction within just a few months of launch. His commitment is why I wouldn't hesitate to recommend him anytime.",
-    photo: "/images/reviews/review-2.svg",
-    designation: "Designer - Coursebay",
+      "Asif’s dedication to user-centric design created a noticeable improvement in user satisfaction within just a few months. His professionalism and thoughtful approach are why I would gladly recommend him anytime.",
+    photo: "/images/reviews/review-1.webp",
   },
+
   {
     id: "2",
-    title: "He is a valuable asset to any team!",
-    name: "Maryam Amartey",
+    title: "A reliable professional and a true asset to any team!",
+    name: "Mariam Siddiqua",
+    designation: "National Officer",
     review:
-      "Asif's innovative approach, willingness to go above and beyond, and strong sense of perfection and timeliness make him an invaluable asset to any team. I highly recommend him!",
-    photo: "/images/reviews/review-1.svg",
-    designation: "National Officer - WFP",
+      "Asif’s innovative mindset, strong work ethic, and commitment to quality consistently stand out. He goes above and beyond to ensure the best results. I wholeheartedly recommend him!",
+    photo: "/images/reviews/review-2.webp",
   },
 
   {
     id: "3",
-    title: "Working with Asif delivered measurable impact.",
-    name: "Caleb T. Ikyernum",
+    title: "Working with Asif brought clear, measurable results.",
+    name: "Md. Raiyan Ahmed",
+    designation: "Data Analyst",
     review:
-      "Asif's innovative, user-centric designs and relentless pursuit of excellence make him a design visionary. This is evident in his exceptional results, including a 40% boost in engagement on our project.",
-    photo: "/images/reviews/review-3.svg",
-    designation: "Data Analyst - IOM",
+      "Asif’s user-focused design approach and attention to detail significantly boosted our project’s performance, including a 40% increase in engagement. His work truly reflects vision and excellence.",
+    photo: "/images/reviews/review-3.webp",
   },
+
   {
     id: "4",
-    title: "He demonstrates outstanding professionalism!",
-    name: "Caleb T. Ikyernum",
+    title: "He consistently demonstrates outstanding professionalism!",
+    name: "Abdul Muhaimin",
+    designation: "Founder",
     review:
-      "Asif is a standout professional with exceptional communication skills and a strategic mindset. His positivity and collaborative spirit further distinguish him. Highly recommended!",
+      "Asif is a standout professional with strong communication skills and a strategic mindset. His positive attitude and collaborative nature make him a pleasure to work with. Highly recommended!",
     photo: "/images/reviews/review-4.png",
-    designation: "Eagle Soul",
   },
 ]

@@ -13,7 +13,7 @@ const Home = () => {
         <Header name="Projects" />
         <Projects />
       </div>
-      <div className="mt-28 border-wrapper !border-[#1A1A1A] md:p-5 p-1 md:space-y-10 space-y-3">
+      <div className="mt-28 border-wrapper border-[#1A1A1A]! md:p-5 p-1 md:space-y-10 space-y-3">
         <Header name="WORK HISTORY" />
         <Experiences />
       </div>
