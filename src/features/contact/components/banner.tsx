@@ -11,7 +11,7 @@ const Banner = () => {
           <h3
             className={`uppercase text-2xl font-semibold leading-normal`}
           >{`LET’S WORK`}</h3>
-          <p className={`description !text-base max-w-2xl`}>
+          <p className={`description text-base! max-w-2xl`}>
             {`Take the first step towards digital success with Asif. I am eager to craft tailored solutions that drive growth for your business.`}
           </p>
         </article>

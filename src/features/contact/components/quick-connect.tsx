@@ -14,7 +14,7 @@ const QuickConnect = () => {
             <div className="space-y-12 w-full">
               <article className="text-center space-y-2">
                 <h1 className={styles.header}>{`Let's work together`}</h1>
-                <p className="description !text-xl">{`Let’s make magic together!`}</p>
+                <p className="description text-xl!">{`Let’s make magic together!`}</p>
               </article>
               <div className="flex justify-center">
                 <div className="md:space-y-9 space-y-3 w-auto flex gap-1 sm:flex-col flex-row">
@@ -46,7 +46,7 @@ const QuickConnect = () => {
                     <p>Email me</p>
                   </a>
                   <button
-                    className={`!bg-[#0F0F0F] button w-full md:min-w-96 flex justify-center items-center mx-auto`}
+                    className={`bg-[#0F0F0F]! button w-full md:min-w-96 flex justify-center items-center mx-auto`}
                     type="button"
                     aria-label="Contact me on WhatsApp"
                     onClick={() => {

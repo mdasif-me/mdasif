@@ -49,7 +49,7 @@ export default function Process(): JSX.Element {
           </h4>
         </div>
         <div className="lg:mt-80 mt-20">
-          <h4 className="gradient-text !text-xl !normal-case max-w-3xl">
+          <h4 className="gradient-text text-xl! normal-case! max-w-3xl">
             {`First, I want to fully understand the project by determining what it needs, whether it's feasible, and what you hope to achieve.`}
           </h4>
           <ProcessArrow />
@@ -58,7 +58,7 @@ export default function Process(): JSX.Element {
       <div className="flex items-center lg:justify-between justify-center">
         <div></div>
         <div>
-          <h4 className="gradient-text !text-xl !normal-case max-w-3xl">
+          <h4 className="gradient-text text-xl! normal-case! max-w-3xl">
             {`Then, I conceptualize and design the software's architecture, user interface, and overall user experience.`}
           </h4>
           <ProcessArrow
@@ -69,7 +69,7 @@ export default function Process(): JSX.Element {
       </div>
       <div className="flex items-center lg:justify-between justify-center">
         <div>
-          <h4 className="gradient-text !text-xl !normal-case max-w-3xl">
+          <h4 className="gradient-text text-xl! normal-case! max-w-3xl">
             {`Next, I develop and implement the code, constructing the software according to the design specifications.`}
           </h4>
           <ProcessArrow />
@@ -78,7 +78,7 @@ export default function Process(): JSX.Element {
       </div>
       <div className="flex items-center lg:justify-between justify-center">
         <div>
-          <h4 className="gradient-text !text-xl !normal-case max-w-3xl">
+          <h4 className="gradient-text text-xl! normal-case! max-w-3xl">
             {`Then, I perform comprehensive testing, identify and fix any issues, and ensure it meets our high standards.`}
           </h4>
           <ProcessArrow
@@ -91,7 +91,7 @@ export default function Process(): JSX.Element {
       <div className="flex items-center lg:justify-between justify-center">
         <div></div>
         <div>
-          <h4 className="gradient-text !text-xl !normal-case max-w-3xl">
+          <h4 className="gradient-text text-xl! normal-case! max-w-3xl">
             {`Next, I deploy the software to its live environment and ensure everything runs smoothly across all systems.`}
           </h4>
           <ProcessArrow justify="lg:justify-start justify-center" />
@@ -99,7 +99,7 @@ export default function Process(): JSX.Element {
       </div>
       <div className="flex items-center lg:justify-between justify-center">
         <div>
-          <h4 className="gradient-text !text-xl !normal-case max-w-3xl">
+          <h4 className="gradient-text text-xl! normal-case! max-w-3xl">
             {`And finally, I continuously monitor performance, gather user feedback, and refine the product to keep it efficient, reliable, and aligned with user needs.`}
           </h4>
         </div>
