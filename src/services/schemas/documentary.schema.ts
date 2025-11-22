@@ -27,7 +27,7 @@ export const SDocumentarySchema = new Schema<IDocumentary>(
     description: {
       type: String,
       trim: true,
-      maxlength: 500,
+      maxlength: 5000,
     },
     category: {
       type: String,

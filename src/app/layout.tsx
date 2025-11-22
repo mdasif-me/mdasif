@@ -60,11 +60,15 @@ export default function RootLayout({
           <div className="container mx-auto my-7">
             <div className="mt-20 border-wrapper border-[#1A1A1A]! md:p-5 p-1 md:space-y-10 space-y-3">
               <Header name="REVIEWS" />
-              <Reviews />
+              <Suspense>
+                <Reviews />
+              </Suspense>
             </div>
             <div className="mt-28 md:space-y-10 space-y-3">
               <Header name="FREQUENTLY ASKED QUESTIONS" />
-              <FAQ />
+              <Suspense>
+                <FAQ />
+              </Suspense>
             </div>
             <div className="mt-28 md:space-y-10 space-y-3">
               <Suspense>

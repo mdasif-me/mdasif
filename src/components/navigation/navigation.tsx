@@ -15,14 +15,14 @@ const Navigation = () => {
       <nav className={`fixed w-full z-50 top-7`}>
         <section className={`${styles.navigation} gap-1 container mx-auto`}>
           <p className={styles.logo}>Asif</p>
-          <ul className={`${styles.menus} md:!flex !hidden`}>
+          <ul className={`${styles.menus} md:flex! hidden!`}>
             {menus.map((menu) => (
               <Menu key={menu.name} menu={menu} />
             ))}
           </ul>
 
           <div className="flex items-center">
-            <Link href="#contact" className="md:block hidden">
+            <Link href="#contact" className="lg:block hidden">
               <button
                 className={`primary_button cursor-pointer ${styles.menu}`}
               >

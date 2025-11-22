@@ -1,9 +1,7 @@
-export { CommentForm } from "./comment-form"
-export { CommentItem } from "./comment-item"
-export { CommentsSection } from "./comments-section"
-export { DocumentaryDetail } from "./documentary-detail"
-export { DocumentaryList } from "./documentary-list"
-export { EngagementButtons } from "./engagement-buttons"
+export { Comment } from "./components/comment"
+export { Content } from "./components/content"
+export { Header } from "./components/header"
+export { default as Sidebar } from "./components/sidebar"
 
 export type {
   IComment,

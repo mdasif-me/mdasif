@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import { Metadata } from "next"
 
-import { DocumentaryDetail } from "@/features/documentaries"
+import Documentary from "../../../features/documentaries/documentary"
 
 interface DocumentaryPageProps {
   params: Promise<{ id: string }>
@@ -35,7 +35,7 @@ export default async function DocumentaryPage({
   return (
     <section className="space-y-8 py-12 mt-48">
       <Suspense>
-        <DocumentaryDetail documentaryId={id} />
+        <Documentary documentaryId={id} />
       </Suspense>
     </section>
   )
