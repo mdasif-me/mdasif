@@ -7,46 +7,38 @@ import { motion } from "motion/react"
 import { Comment, Content, Header } from "./components"
 import { IDocumentary, IEngagementStats } from "./interface"
 
-export default function Documentary({
-  documentaryId,
-}: {
-  documentaryId: string
-}) {
+interface DocumentaryProps {
+  initialDocumentary: IDocumentary
+}
+
+export default function Documentary({ initialDocumentary }: DocumentaryProps) {
   const navigate = useRouter()
-  const [documentary, setDocumentary] = useState<IDocumentary | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState("")
   const [engagementStats, setEngagementStats] = useState<IEngagementStats>({
     userEngagement: null,
-    stats: { likes: 0, dislikes: 0 },
+    stats: {
+      likes: initialDocumentary.likes ?? 0,
+      dislikes: initialDocumentary.dislikes ?? 0,
+    },
   })
 
   useEffect(() => {
-    const fetchData = async () => {
+    // Only fetch engagement stats on mount to get user-specific status
+    const fetchEngagement = async () => {
       try {
-        setLoading(true)
-        setError("")
-
-        const docResponse = await fetch(`/api/documentaries/${documentaryId}`)
-        if (!docResponse.ok) throw new Error("Failed to fetch documentary")
-        const docData = await docResponse.json()
-        setDocumentary(docData.documentary)
-        setEngagementStats({
-          userEngagement: null,
-          stats: {
-            likes: docData.documentary.likes ?? 0,
-            dislikes: docData.documentary.dislikes ?? 0,
-          },
-        })
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred")
-      } finally {
-        setLoading(false)
+        const statsResponse = await fetch(
+          `/api/engagements?targetId=${initialDocumentary._id}&targetType=documentary`
+        )
+        if (statsResponse.ok) {
+          const updatedStats = await statsResponse.json()
+          setEngagementStats(updatedStats)
+        }
+      } catch (error) {
+        console.error("Failed to fetch engagement stats", error)
       }
     }
 
-    fetchData()
-  }, [documentaryId])
+    fetchEngagement()
+  }, [initialDocumentary._id])
 
   const handleEngagement = async (type: "like" | "dislike") => {
     try {
@@ -54,7 +46,7 @@ export default function Documentary({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          targetId: documentaryId,
+          targetId: initialDocumentary._id,
           targetType: "documentary",
           engagementType: type,
         }),
@@ -71,7 +63,7 @@ export default function Documentary({
       }
 
       const statsResponse = await fetch(
-        `/api/engagements?targetId=${documentaryId}&targetType=documentary`
+        `/api/engagements?targetId=${initialDocumentary._id}&targetType=documentary`
       )
 
       if (!statsResponse.ok) {
@@ -91,22 +83,6 @@ export default function Documentary({
     }
   }
 
-  if (loading) {
-    return (
-      <div className="flex h-screen items-center justify-center text-gray-500">
-        Loading...
-      </div>
-    )
-  }
-
-  if (error || !documentary) {
-    return (
-      <div className="flex h-screen items-center justify-center text-red-500">
-        Error: {error || "Documentary not found"}
-      </div>
-    )
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -116,26 +92,26 @@ export default function Documentary({
     >
       <div className="mx-auto px-6">
         <Header
-          category={documentary.category || ""}
-          badge={documentary.badge || ""}
-          title={documentary.title || ""}
-          publishedDate={documentary.createdAt || ""}
-          views={documentary.views || 0}
-          onBack={() => navigate.push("/")}
+          category={initialDocumentary.category || ""}
+          badge={initialDocumentary.badge || ""}
+          title={initialDocumentary.title || ""}
+          publishedDate={initialDocumentary.createdAt || ""}
+          views={initialDocumentary.views || 0}
+          onBack={() => navigate.push("/documentaries")}
           engagementStats={engagementStats}
           onEngagement={handleEngagement}
         />
 
         <div className="mt-16">
           <Content
-            description={documentary.description || ""}
-            content={documentary.content || ""}
-            coverImage={documentary.thumbnail || ""}
+            description={initialDocumentary.description || ""}
+            content={initialDocumentary.content || ""}
+            coverImage={initialDocumentary.thumbnail || ""}
           />
         </div>
 
         <div className="mt-16">
-          <Comment documentaryId={documentaryId} />
+          <Comment documentaryId={initialDocumentary._id} />
         </div>
       </div>
     </motion.div>
