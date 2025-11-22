@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import {
   EyeIcon,
   ThumbsDownIcon as ThumbsDownIconFilled,
@@ -48,7 +48,15 @@ export const Header = ({
     null
   )
 
+  const captchaInputRef = useRef<HTMLInputElement>(null)
+  const captchaModalRef = useRef<HTMLDivElement>(null)
+  const submitButtonRef = useRef<HTMLButtonElement>(null)
+
   const date = new Date(publishedDate)
+  if (isNaN(date.getTime())) {
+    console.error("Invalid date provided:", publishedDate)
+    // Handle error appropriately
+  }
   const formattedDate = date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -75,6 +83,12 @@ export const Header = ({
     }
   }
 
+  const closeCaptcha = () => {
+    setShowCaptcha(false)
+    setPendingAction(null)
+    setUserAnswer("")
+  }
+
   const handleCaptchaSubmit = () => {
     if (parseInt(userAnswer) === captcha.answer) {
       setIsVerified(true)
@@ -86,6 +100,106 @@ export const Header = ({
     } else {
       alert("Incorrect answer, please try again.")
       generateCaptcha()
+    }
+  }
+
+  // Auto-focus input when CAPTCHA opens
+  useEffect(() => {
+    if (showCaptcha && captchaInputRef.current) {
+      captchaInputRef.current.focus()
+    }
+  }, [showCaptcha])
+
+  // Focus trap implementation
+  useEffect(() => {
+    if (!showCaptcha) return
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return
+
+      const focusableElements = [
+        captchaInputRef.current,
+        submitButtonRef.current,
+      ].filter(Boolean) as HTMLElement[]
+
+      if (focusableElements.length === 0) return
+
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault()
+          lastElement.focus()
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault()
+          firstElement.focus()
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleTabKey)
+    return () => document.removeEventListener("keydown", handleTabKey)
+  }, [showCaptcha])
+
+  // Escape key handler
+  useEffect(() => {
+    if (!showCaptcha) return
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeCaptcha()
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape)
+    return () => document.removeEventListener("keydown", handleEscape)
+  }, [showCaptcha])
+
+  // Click outside handler
+  useEffect(() => {
+    if (!showCaptcha) return
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        captchaModalRef.current &&
+        !captchaModalRef.current.contains(e.target as Node)
+      ) {
+        closeCaptcha()
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [showCaptcha])
+
+  // Share functionality
+  const handleShare = (platform: "twitter" | "facebook" | "linkedin") => {
+    const currentUrl = typeof window !== "undefined" ? window.location.href : ""
+    const shareText = `Check out this documentary: ${title}`
+
+    let shareUrl = ""
+
+    switch (platform) {
+      case "twitter":
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(currentUrl)}`
+        break
+      case "facebook":
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`
+        break
+      case "linkedin":
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`
+        break
+    }
+
+    if (shareUrl) {
+      window.open(
+        shareUrl,
+        "_blank",
+        "noopener,noreferrer,width=600,height=400"
+      )
     }
   }
 
@@ -108,7 +222,8 @@ export const Header = ({
 
           <button
             onClick={() => handleEngagementClick("like")}
-            className={`gap-2 flex items-center`}
+            className="gap-2 flex items-center"
+            aria-label={`Like this documentary. Current likes: ${engagementStats.stats.likes}`}
           >
             {engagementStats.userEngagement === "like" ? (
               <HugeiconsIcon icon={ThumbsUpIconFilled} className="h-4 w-4" />
@@ -119,7 +234,8 @@ export const Header = ({
           </button>
           <button
             onClick={() => handleEngagementClick("dislike")}
-            className={`gap-2 flex items-center`}
+            className="gap-2 flex items-center"
+            aria-label={`Dislike this documentary. Current dislikes: ${engagementStats.stats.dislikes}`}
           >
             {engagementStats.userEngagement === "dislike" ? (
               <HugeiconsIcon icon={ThumbsDownIconFilled} className="h-4 w-4" />
@@ -133,21 +249,37 @@ export const Header = ({
           </button>
 
           {showCaptcha && (
-            <div className="bg-secondary-foreground border-border/10 absolute top-full right-0 z-50 mt-2 w-64 rounded-xl border p-4 shadow-2xl">
-              <p className="text-foreground mb-2 text-sm font-medium">
+            <div
+              ref={captchaModalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="captcha-title"
+              className="bg-secondary-foreground border-border/10 absolute top-full right-0 z-50 mt-2 w-64 rounded-xl border p-4 shadow-2xl"
+            >
+              <p
+                id="captcha-title"
+                className="text-foreground mb-2 text-sm font-medium"
+              >
                 Verify you are human
               </p>
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-muted-foreground">
                   {captcha.question} =
                 </span>
                 <input
+                  ref={captchaInputRef}
                   type="number"
                   value={userAnswer}
                   onChange={(e) => setUserAnswer(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleCaptchaSubmit()}
                   className="border-border/10 focus:border-primary w-16 rounded-md border p-1 text-center text-sm outline-none"
+                  aria-label="Enter the answer to the math question"
                 />
-                <Button size="sm" onClick={handleCaptchaSubmit}>
+                <Button
+                  ref={submitButtonRef}
+                  size="sm"
+                  onClick={handleCaptchaSubmit}
+                >
                   OK
                 </Button>
               </div>
@@ -174,14 +306,32 @@ export const Header = ({
           <span className="text-muted-foreground text-sm font-medium tracking-widest uppercase">
             Share this
           </span>
-          <Button variant="default" size="icon" className="rounded-full">
-            <HugeiconsIcon icon={TwitterIcon} size={20} className="size-5" />
+          <Button
+            variant="default"
+            size="icon"
+            className="rounded-full"
+            onClick={() => handleShare("twitter")}
+            aria-label="Share on Twitter"
+          >
+            <HugeiconsIcon icon={TwitterIcon} className="size-5" />
           </Button>
-          <Button variant="default" size="icon" className="rounded-full">
-            <HugeiconsIcon icon={FacebookIcon} size={20} className="size-5" />
+          <Button
+            variant="default"
+            size="icon"
+            className="rounded-full"
+            onClick={() => handleShare("facebook")}
+            aria-label="Share on Facebook"
+          >
+            <HugeiconsIcon icon={FacebookIcon} className="size-5" />
           </Button>
-          <Button variant="default" size="icon" className="rounded-full">
-            <HugeiconsIcon icon={LinkedinIcon} size={20} className="size-5" />
+          <Button
+            variant="default"
+            size="icon"
+            className="rounded-full"
+            onClick={() => handleShare("linkedin")}
+            aria-label="Share on LinkedIn"
+          >
+            <HugeiconsIcon icon={LinkedinIcon} className="size-5" />
           </Button>
         </div>
       </div>

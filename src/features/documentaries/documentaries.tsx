@@ -26,6 +26,8 @@ export default function Documentaries({ category }: DocumentaryListProps) {
   const [totalPages, setTotalPages] = useState(1)
 
   useEffect(() => {
+    const abortController = new AbortController()
+
     const fetchDocumentaries = async () => {
       try {
         setLoading(true)
@@ -39,20 +41,35 @@ export default function Documentaries({ category }: DocumentaryListProps) {
           params.append("category", category)
         }
 
-        const response = await fetch(`/api/documentaries?${params}`)
+        const response = await fetch(`/api/documentaries?${params}`, {
+          signal: abortController.signal,
+        })
 
         if (response.ok) {
           const data = await response.json()
-          setDocumentaries(data.documentaries)
-          setTotalPages(data.pagination.pages)
+          if (data?.documentaries && data?.pagination?.pages) {
+            setDocumentaries(data.documentaries)
+            setTotalPages(data.pagination.pages)
+          } else {
+            console.error("Invalid API response structure:", data)
+            setDocumentaries([])
+          }
+        } else {
+          console.error(`API error: ${response.status} ${response.statusText}`)
+          setDocumentaries([])
         }
       } catch (error) {
-        console.error("Error fetching documentaries:", error)
+        if ((error as Error).name !== "AbortError") {
+          console.error("Error fetching documentaries:", error)
+          setDocumentaries([])
+        }
       } finally {
         setLoading(false)
       }
     }
     fetchDocumentaries()
+
+    return () => abortController.abort()
   }, [category, page])
 
   if (loading) {
@@ -60,9 +77,13 @@ export default function Documentaries({ category }: DocumentaryListProps) {
       <div className="text-center text-gray-500">Loading documentaries...</div>
     )
   }
-
-  console.log("documentaries", documentaries)
-
+  if (documentaries.length === 0) {
+    return (
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center text-gray-500">No documentaries found.</div>
+      </div>
+    )
+  }
   return (
     <div className="container mx-auto px-4 md:px-6 lg:px-8">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

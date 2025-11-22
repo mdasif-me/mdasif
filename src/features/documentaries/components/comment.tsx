@@ -149,7 +149,7 @@ export const Comment = ({ documentaryId }: CommentProps) => {
 
   return (
     <section className="space-y-4">
-      <div className="border-border/10 12">
+      <div className="border-border/10">
         <h2 className="text-foreground mb-8 flex items-center gap-2 text-2xl font-bold">
           <HugeiconsIcon icon={Message01Icon} className="h-6 w-6" />
           Comments ({comments.length})
@@ -350,7 +350,7 @@ const CommentItem = ({
     <div className="bg-secondary-foreground border-border/10 hover:bg-blog-hover rounded-2xl border p-4 transition-colors">
       <div className="flex items-start space-x-4">
         <Avatar className="h-10 w-10 capitalize">
-          <AvatarImage src="" alt={comment.author} />
+          <AvatarImage src="" alt={`${comment.author}'s avatar`} />
           <AvatarFallback className="uppercase">
             {comment.author?.charAt(0)}
           </AvatarFallback>

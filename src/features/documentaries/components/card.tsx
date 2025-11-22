@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-interface BlogPostCardProps {
+interface DocumentaryCardProps {
   imageSrc: string
   imageAlt: string
   title: string
@@ -15,7 +15,7 @@ export default function Card({
   title,
   description,
   _id,
-}: BlogPostCardProps) {
+}: DocumentaryCardProps) {
   return (
     <Link href={`/documentaries/${_id}`}>
       <div className="bg-secondary-foreground text-secondary overflow-hidden rounded-2xl border-border/10 border">

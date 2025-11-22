@@ -27,16 +27,15 @@ export default function Documentary({
         setLoading(true)
         setError("")
 
-        // Fetch documentary
         const docResponse = await fetch(`/api/documentaries/${documentaryId}`)
         if (!docResponse.ok) throw new Error("Failed to fetch documentary")
         const docData = await docResponse.json()
         setDocumentary(docData.documentary)
         setEngagementStats({
-          userEngagement: null, // You might want to fetch user specific engagement if available
+          userEngagement: null,
           stats: {
-            likes: docData.documentary.likes,
-            dislikes: docData.documentary.dislikes,
+            likes: docData.documentary.likes ?? 0,
+            dislikes: docData.documentary.dislikes ?? 0,
           },
         })
       } catch (err) {
@@ -61,16 +60,34 @@ export default function Documentary({
         }),
       })
 
-      if (!response.ok) throw new Error("Failed to update engagement")
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        const errorMessage =
+          errorData.message ||
+          errorData.error ||
+          `Failed to ${type} the documentary. Please try again.`
+        alert(errorMessage)
+        return
+      }
 
-      // Optimistic update or re-fetch
       const statsResponse = await fetch(
         `/api/engagements?targetId=${documentaryId}&targetType=documentary`
       )
+
+      if (!statsResponse.ok) {
+        const errorMessage = "Failed to fetch updated engagement stats"
+        alert(errorMessage)
+        return
+      }
+
       const updatedStats = await statsResponse.json()
       setEngagementStats(updatedStats)
     } catch (error) {
-      console.error("Error updating engagement:", error)
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Network error. Please check your connection and try again."
+      alert(errorMessage)
     }
   }
 
@@ -85,7 +102,7 @@ export default function Documentary({
   if (error || !documentary) {
     return (
       <div className="flex h-screen items-center justify-center text-red-500">
-        Error: {error}
+        Error: {error || "Documentary not found"}
       </div>
     )
   }
