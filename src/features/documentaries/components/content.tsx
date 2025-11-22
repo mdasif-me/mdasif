@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo } from "react"
 import Image from "next/image"
 import DOMPurify from "dompurify"
 
@@ -14,37 +15,34 @@ export const Content = ({
   coverImage,
   description,
 }: BlogContentProps) => {
-  // Sanitize HTML content to prevent XSS attacks
-  // Note: DOMPurify requires a browser environment (window object)
-  const sanitizedContent =
-    typeof window !== "undefined"
-      ? DOMPurify.sanitize(content, {
-          ALLOWED_TAGS: [
-            "p",
-            "br",
-            "strong",
-            "em",
-            "u",
-            "h1",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "h6",
-            "ul",
-            "ol",
-            "li",
-            "a",
-            "blockquote",
-            "code",
-            "pre",
-            "img",
-            "div",
-            "span",
-          ],
-          ALLOWED_ATTR: ["href", "src", "alt", "title", "class", "id"],
-        })
-      : content
+  const sanitizedContent = useMemo(() => {
+    return DOMPurify.sanitize(content, {
+      ALLOWED_TAGS: [
+        "p",
+        "br",
+        "strong",
+        "em",
+        "u",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "ul",
+        "ol",
+        "li",
+        "a",
+        "blockquote",
+        "code",
+        "pre",
+        "img",
+        "div",
+        "span",
+      ],
+      ALLOWED_ATTR: ["href", "src", "alt", "title", "class", "id"],
+    })
+  }, [content])
 
   return (
     <article className="space-y-8">

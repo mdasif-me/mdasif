@@ -47,7 +47,10 @@ export default function Documentaries({ category }: DocumentaryListProps) {
 
         if (response.ok) {
           const data = await response.json()
-          if (data?.documentaries && data?.pagination?.pages) {
+          if (
+            Array.isArray(data?.documentaries) &&
+            typeof data?.pagination?.pages === "number"
+          ) {
             setDocumentaries(data.documentaries)
             setTotalPages(data.pagination.pages)
           } else {
