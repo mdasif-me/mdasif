@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import {
   EyeIcon,
   ThumbsDownIcon as ThumbsDownIconFilled,
@@ -83,11 +83,11 @@ export const Header = ({
     }
   }
 
-  const closeCaptcha = () => {
+  const closeCaptcha = useCallback(() => {
     setShowCaptcha(false)
     setPendingAction(null)
     setUserAnswer("")
-  }
+  }, [])
 
   const handleCaptchaSubmit = () => {
     if (parseInt(userAnswer) === captcha.answer) {
@@ -156,7 +156,7 @@ export const Header = ({
 
     document.addEventListener("keydown", handleEscape)
     return () => document.removeEventListener("keydown", handleEscape)
-  }, [showCaptcha])
+  }, [showCaptcha, closeCaptcha])
 
   // Click outside handler
   useEffect(() => {
@@ -173,7 +173,7 @@ export const Header = ({
 
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [showCaptcha])
+  }, [showCaptcha, closeCaptcha])
 
   // Share functionality
   const handleShare = (platform: "twitter" | "facebook" | "linkedin") => {
